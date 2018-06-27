@@ -1,0 +1,5 @@
+-------Testing------
+curl -X POST "web_app:@localhost:9090/oauth/token" -d "grant_type=password&username=admin&password=123456789"
+TOKEN=.....
+
+curl -X POST -H 'Content-Type: application/json' -i http://localhost:8085/products/ --data '{"code":"prod1", "price":5, "stock":60}' -H "Authorization: Bearer $TOKEN"

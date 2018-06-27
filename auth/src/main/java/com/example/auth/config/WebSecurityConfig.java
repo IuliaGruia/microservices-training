@@ -40,4 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("123456789")
                 .authorities("USER");
     }
+
+
 }

@@ -2,6 +2,7 @@ package ro.microservices.invetory.resources;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ro.microservices.invetory.entities.Product;
 import ro.microservices.invetory.models.ProductModel;
@@ -28,9 +29,10 @@ public class ProductResource {
                    .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
             }
 
-            @PostMapping("/")
-            public ResponseEntity<ProductModel> saveProduct(@RequestBody final ProductModel productModel){
+    @PostMapping("/")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<ProductModel> saveProduct(@RequestBody final ProductModel productModel){
 
-            return ResponseEntity.ok(productService.save(productModel));
-            }
+    return ResponseEntity.ok(productService.save(productModel));
+    }
 }

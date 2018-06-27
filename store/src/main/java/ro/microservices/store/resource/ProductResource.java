@@ -28,6 +28,7 @@ public class ProductResource {
     public Collection<ProductModel> getcategoryProducts(@PathVariable("category") final long categId){
         return productService.getByCategoryId(categId);
     }
+
     @GetMapping
     public Collection<ProductModel> getByCode(@PathVariable("code") final String code){
        return productService.getByCode(code);

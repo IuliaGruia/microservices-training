@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.integration.annotation.IntegrationComponentScan;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.stereotype.Component;
 import ro.microservices.invetory.config.KafkaChannels;
 import ro.microservices.invetory.entities.Product;
@@ -18,9 +20,11 @@ import java.math.BigDecimal;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableBinding(KafkaChannels.class)
-public class InvetoryApplication {
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class InventoryApplication {
     public static void main(String[] args) {
-        SpringApplication.run(InvetoryApplication.class, args);
+        SpringApplication.run(InventoryApplication.class, args);
     }
 }
 
